@@ -24,7 +24,7 @@ def solution(x_success: int,
     print(critical_value)
 
     if cf > critical_value:
-        rez = 1 #
-    else:
         rez = 0 #
+    else:
+        rez = 1 #
     return bool(rez)

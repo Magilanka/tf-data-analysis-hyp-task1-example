@@ -9,7 +9,7 @@ def solution(x_success: int,
              y_success: int, 
              y_cnt: int) -> bool:
   
-    from scipy.stats import scist
+    from scipy.stats import chi2
 
     n = np.sum(x_success) + np.sum(y_success)
     p1 = np.sum(x_success) / np.sum(x_cnt)
@@ -20,7 +20,7 @@ def solution(x_success: int,
 
     alpha = 0.02
     df = 1
-    critical_value = scist.ppf(1 - alpha, df)
+    critical_value = chi2.ppf(1 - alpha, df)
     print(critical_value)
 
     if cf > critical_value:

@@ -9,22 +9,19 @@ def solution(x_success: int,
              y_success: int, 
              y_cnt: int) -> bool:
   
-    from scipy.stats import chi2
+  from scipy.stats import chi2
 
-    n = np.sum(x_success) + np.sum(y_success)
-    p1 = np.sum(x_success) / np.sum(x_cnt)
-    p2 = np.sum(y_success) / np.sum(y_cnt)
-    p = (np.sum(x_success) + np.sum(y_success)) / (np.sum(x_cnt) + np.sum(y_cnt))
-    cf = np.sqrt(n) * (p2 - p1) / np.sqrt(p * (1 - p))
-    print(cf)
+  n = np.sum(x_success) + np.sum(y_success)
+  p1 = np.sum(x_success) / np.sum(x_cnt)
+  p2 = np.sum(y_success) / np.sum(y_cnt)
+  p = (np.sum(x_success) + np.sum(y_success)) / (np.sum(x_cnt) + np.sum(y_cnt))
+  cf = np.sqrt(n) * (p2 - p1) / np.sqrt(p * (1 - p))
 
-    alpha = 0.02
-    df = 1
-    critical_value = chi2.ppf(1 - alpha, df)
-    print(critical_value)
-
-    if cf > critical_value:
-        rez = 0 #
-    else:
-        rez = 1 #
-    return bool(rez)
+  alpha = 0.02
+  df = 1
+  critical_value = chi2.ppf(1 - alpha, df)
+  if cf > critical_value:
+    rez = 0 #
+  else:
+    rez = 1 #
+  return bool(rez)
